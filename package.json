@@ -1,0 +1,32 @@
+{
+  "name": "ai-prompt-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI 프롬프트 갤러리 - ChatGPT, Claude, Midjourney 프롬프트 템플릿 라이브러리",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "npx --yes serve out",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "verify": "node scripts/verify-static.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}
