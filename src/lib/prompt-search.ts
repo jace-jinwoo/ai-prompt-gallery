@@ -6,6 +6,8 @@ export interface PromptFilter {
   category: CategoryId | 'all';
 }
 
+const TOOL_ALIASES: Record<string, string> = { chatgpt: '챗gpt 챗지피티', claude: '클로드', midjourney: '미드저니' };
+
 /** 검색어 공백 기준 AND 매칭(제목·요약·목적·키워드·도구명). 대소문자 무시. */
 export function filterPrompts(items: PromptItem[], f: PromptFilter): PromptItem[] {
   const terms = f.query.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -13,7 +15,7 @@ export function filterPrompts(items: PromptItem[], f: PromptFilter): PromptItem[
     if (f.tool !== 'all' && p.tool !== f.tool) return false;
     if (f.category !== 'all' && p.category !== f.category) return false;
     if (terms.length === 0) return true;
-    const hay = [p.title, p.summary, p.purpose, p.tool, ...p.keywords].join(' ').toLowerCase();
+    const hay = [p.title, p.summary, p.purpose, p.tool, TOOL_ALIASES[p.tool] ?? '', ...p.keywords].join(' ').toLowerCase();
     return terms.every((t) => hay.includes(t));
   });
 }
